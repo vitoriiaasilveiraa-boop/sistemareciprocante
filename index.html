@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema Reciprocante em Endodontia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marrom-escuro: #4E342E;
+      --marrom-medio: #795548;
+      --marrom-claro: #D7CCC8;
+      --branco: #FFF8F0;
+      --destaque: #A1887F;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, var(--marrom-claro) 0%, var(--branco) 100%);
+      color: var(--marrom-escuro);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    header {
+      background: var(--marrom-escuro);
+      color: var(--branco);
+      padding: 2rem 1rem 1.5rem 1rem;
+      text-align: center;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      box-shadow: 0 4px 16px rgba(78,52,46,0.08);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: var(--branco);
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(78,52,46,0.10);
+      padding: 2rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    .explicacao {
+      font-size: 1.13rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .quiz {
+      background: var(--marrom-claro);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px #0001;
+    }
+    .quiz h2 {
+      margin-top: 0;
+      color: var(--marrom-escuro);
+      font-size: 1.4rem;
+    }
+    .pergunta {
+      margin-bottom: 1.3rem;
+      font-weight: 500;
+    }
+    .opcoes label {
+      display: block;
+      margin-bottom: 0.7em;
+      cursor: pointer;
+      padding-left: 1.2em;
+      position: relative;
+    }
+    .opcoes input[type="radio"] {
+      position: absolute;
+      left: 0;
+      top: 0.1em;
+    }
+    .quiz button {
+      margin-top: 1em;
+      padding: 0.6em 1.5em;
+      background: var(--marrom-medio);
+      color: var(--branco);
+      border: none;
+      border-radius: 7px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 1px 5px #0001;
+      transition: background 0.2s;
+    }
+    .quiz button:hover {
+      background: var(--marrom-escuro);
+    }
+    .resultado-quiz {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--destaque);
+      margin-top: 1rem;
+    }
+    .quadro-duvidas {
+      background: var(--marrom-claro);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px #0001;
+    }
+    .quadro-duvidas h2 {
+      margin-top: 0;
+      font-size: 1.3rem;
+      color: var(--marrom-escuro);
+    }
+    .quadro-duvidas form {
+      display: flex;
+      gap: 0.7rem;
+      margin-bottom: 1.1rem;
+      flex-wrap: wrap;
+    }
+    .quadro-duvidas input, .quadro-duvidas textarea {
+      font-family: inherit;
+      padding: 0.5em;
+      border-radius: 5px;
+      border: 1px solid var(--marrom-medio);
+      font-size: 1rem;
+    }
+    .quadro-duvidas textarea {
+      flex: 1 1 200px;
+      min-height: 2.4em;
+      resize: vertical;
+    }
+    .quadro-duvidas button {
+      background: var(--marrom-medio);
+      color: var(--branco);
+      border: none;
+      border-radius: 6px;
+      padding: 0.5em 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .quadro-duvidas button:hover {
+      background: var(--marrom-escuro);
+    }
+    .lista-duvidas {
+      margin: 0;
+      padding: 0 0 0 0.5em;
+      list-style: none;
+      min-height: 1.5em;
+    }
+    .duvida {
+      background: var(--branco);
+      border-left: 5px solid var(--marrom-medio);
+      padding: 0.7em 1em;
+      border-radius: 7px;
+      margin-bottom: 0.7em;
+      box-shadow: 0 1px 2px #0001;
+      font-size: 1.02em;
+      word-break: break-word;
+    }
+    @media (max-width: 800px) {
+      .container {padding: 1rem; }
+      header {padding: 1.3rem 0.5rem;}
+    }
+    @media (max-width: 500px) {
+      h1 { font-size: 1.3rem;}
+      .container {padding: 0.6rem;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sistema Reciprocante em Endodontia</h1>
+    <div style="font-size:1.15rem; color: var(--destaque); font-weight:500;">
+      Aula Interativa &middot; QR Code
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <section>
+        <div class="explicacao">
+          <strong>O sistema reciprocante em endodontia</strong> é uma inovação no preparo biomecânico dos canais radiculares, utilizando instrumentos que alternam movimentos de rotação em sentido horário e anti-horário. Esse método proporciona maior segurança, reduz o risco de fratura dos instrumentos e diminui o tempo de instrumentação, especialmente em canais curvos e de difícil acesso. Os instrumentos reciprocantes, geralmente feitos de níquel-titânio (NiTi), permitem um preparo eficiente e previsível, facilitando o tratamento endodôntico e trazendo benefícios tanto para o profissional quanto para o paciente.
+        </div>
+      </section>
+      <section class="quiz">
+        <h2>Quiz: Teste seus conhecimentos</h2>
+        <form id="quizForm">
+          <div class="pergunta">
+            1. Qual é o principal objetivo do sistema reciprocante em endodontia?
+            <div class="opcoes">
+              <label><input type="radio" name="q1" value="a"> Facilitar o preparo dos canais radiculares</label>
+              <label><input type="radio" name="q1" value="b"> Colorir o canal</label>
+              <label><input type="radio" name="q1" value="c"> Remover apenas obturação antiga</label>
+              <label><input type="radio" name="q1" value="d"> Aumentar a dor do paciente</label>
+            </div>
+          </div>
+          <div class="pergunta">
+            2. A rotação reciprocante alterna movimentos em:
+            <div class="opcoes">
+              <label><input type="radio" name="q2" value="a"> Sentido horário e anti-horário</label>
+              <label><input type="radio" name="q2" value="b"> Apenas sentido horário</label>
+              <label><input type="radio" name="q2" value="c"> Apenas sentido anti-horário</label>
+              <label><input type="radio" name="q2" value="d"> Sentido vertical</label>
+            </div>
+          </div>
+          <div class="pergunta">
+            3. Uma das vantagens do sistema reciprocante é:
+            <div class="opcoes">
+              <label><input type="radio" name="q3" value="a"> Maior risco de fratura</label>
+              <label><input type="radio" name="q3" value="b"> Redução do tempo de preparo</label>
+              <label><input type="radio" name="q3" value="c"> Necessidade de múltiplos instrumentos</label>
+              <label><input type="radio" name="q3" value="d"> Aumento do desconforto ao paciente</label>
+            </div>
+          </div>
+          <div class="pergunta">
+            4. Qual material é mais utilizado nos instrumentos reciprocantes?
+            <div class="opcoes">
+              <label><input type="radio" name="q4" value="a"> Aço inox</label>
+              <label><input type="radio" name="q4" value="b"> Níquel-titânio (NiTi)</label>
+              <label><input type="radio" name="q4" value="c"> Alumínio</label>
+              <label><input type="radio" name="q4" value="d"> Ouro</label>
+            </div>
+          </div>
+          <div class="pergunta">
+            5. O sistema reciprocante foi desenvolvido principalmente para:
+            <div class="opcoes">
+              <label><input type="radio" name="q5" value="a"> Reduzir custos</label>
+              <label><input type="radio" name="q5" value="b"> Facilitar o preparo de canais curvos</label>
+              <label><input type="radio" name="q5" value="c"> Remover obturação antiga</label>
+              <label><input type="radio" name="q5" value="d"> Colorir o canal radicular</label>
+            </div>
+          </div>
+          <button type="submit">Enviar respostas</button>
+        </form>
+        <div class="resultado-quiz" id="resultadoQuiz"></div>
+      </section>
+      <section class="quadro-duvidas">
+        <h2>Quadro de Dúvidas</h2>
+        <form id="duvidaForm" autocomplete="off">
+          <input type="text" id="nomeAluno" placeholder="Nome (opcional)" maxlength="25">
+          <textarea id="duvidaTexto" placeholder="Digite sua dúvida..." required maxlength="240"></textarea>
+          <button type="submit">Enviar dúvida</button>
+        </form>
+        <ul id="listaDuvidas" class="lista-duvidas"></ul>
+      </section>
+    </div>
+  </main>
+  <script>
+    // Quiz lógica
+    const gabarito = ['a','a','b','b','b'];
+    document.getElementById('quizForm').onsubmit = function(e) {
+      e.preventDefault();
+      let acertos = 0;
+      for (let i = 1; i <= gabarito.length; i++) {
+        const resposta = document.querySelector('input[name="q'+i+'"]:checked');
+        if (resposta && resposta.value === gabarito[i-1]) acertos++;
+      }
+      document.getElementById('resultadoQuiz').textContent =
+        `Você acertou ${acertos} de ${gabarito.length} questões.`;
+    };
+
+    // Quadro de dúvidas (local, não persiste se recarregar)
+    const listaDuvidas = document.getElementById('listaDuvidas');
+    document.getElementById('duvidaForm').onsubmit = function(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nomeAluno').value.trim();
+      const duvida = document.getElementById('duvidaTexto').value.trim();
+      if (!duvida) return;
+
+      adicionarDuvida(nome, duvida);
+      document.getElementById('duvidaTexto').value = '';
+    };
+
+    function adicionarDuvida(nome, duvida) {
+      const li = document.createElement('li');
+      li.className = 'duvida';
+      li.innerHTML = `<strong>${nome ? nome : 'Anônimo'}:</strong> ${duvida}`;
+      listaDuvidas.appendChild(li);
+    }
+  </script>
+</body>
+</html>
